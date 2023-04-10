@@ -31,3 +31,5 @@ generation, for the Word Problem and Conjugacy Problem respectively.
 
 To run all the files in the formalization (along with their dependencies), one could simply run
 Nielsen_Schreier.thy
+
+Sessions graph is provided with this distribution for the convenience of review. 
