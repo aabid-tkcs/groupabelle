@@ -18,7 +18,9 @@ The following files are a part of the formalisation and contain original work by
 
 
 Following file, is a part of an archive of formal proof distribution, has been added only for the purpose of the ease of the review process. It contains a truncated version of the original file. Author(s) do not make any claims of original development with regards to the formalisations contained in the following file. It has been redistributed under the permissions granted by BSD license.
+
 12. Generators.thy
+
 The original file and package is available as the article Generators.thy in: 
                                  https://devel.isa-afp.org/entries/Free-Groups.html
 
