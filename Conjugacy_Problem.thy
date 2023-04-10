@@ -1,6 +1,8 @@
 theory Conjugacy_Problem
 imports "FreeGroupMain" "UniversalProperty" "Word_Problem"
 begin
+section \<open>Conjugacy Problem.\<close>
+
 
 text\<open>This file contains a proof of decidability of the conjugacy problem on 
 free groups\<close>

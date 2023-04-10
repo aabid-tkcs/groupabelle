@@ -37,7 +37,7 @@ definition freewords_on::"('a,'b) monoidgentype set \<Rightarrow> ('a,'b) word s
   where
 "\<langle>S\<rangle>  = words_on (invgen S)"
 
-text\<open>Some lemmas about words_on a set.\<close>
+text\<open>Some lemmas about words on a set.\<close>
 
 lemma cons_span: 
   assumes "(x#xs) \<in> (words_on S)" 
@@ -126,8 +126,9 @@ proof-
   qed
 qed
 
-text \<open>wordinverse xs recursively defines the reverse of a word with its elements mapped
-     to their inverses, and will be used to define the inverses of elemnts of a free group.\<close>
+text \<open>wordinverse xs recursively defines the reverse of a word with its elements
+      mapped to their inverses, and will be used to define the inverses of elements
+      of a free group.\<close>
 
 
 primrec wordinverse::"('a,'b) word \<Rightarrow> ('a, 'b) word"
@@ -135,8 +136,8 @@ primrec wordinverse::"('a,'b) word \<Rightarrow> ('a, 'b) word"
 "wordinverse [] = []"
 |"wordinverse (x#xs) =  (wordinverse xs)@[inverse x]"
 
-text \<open>Alternate definitions of wordinverse (defined using rev and map) which might be more convenient
-      in some circumstances.\<close>
+text \<open>Alternate definitions of wordinverse (defined using rev and map) which might
+       be more convenient in some circumstances.\<close>
 
 lemma wordinverse_redef1: 
   "wordinverse xs = rev (map inverse xs)"

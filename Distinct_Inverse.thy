@@ -292,7 +292,7 @@ proof
   moreover have g_inv:"inv\<^bsub>F\<^bsub>S\<^esub>\<^esub> x = (reln_tuple \<langle>S\<rangle>) `` {wordinverse g}"
     using wordinverse_inv[OF assms(1) g(1)] .
   moreover have red_g_inv:"reduced (wordinverse g)" 
-    using assms(1) g(1,3) wordinverse_inv sledgehammer
+    using assms(1) g(1,3) wordinverse_inv
     by (simp add:  reduced_wordinverses)
   have " g \<in> (reln_tuple \<langle>S\<rangle>) `` {g}" using asm g(1,2) 
     unfolding reln_tuple_def Image_def apply(simp)

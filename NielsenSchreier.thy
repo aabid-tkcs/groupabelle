@@ -1,6 +1,7 @@
 theory NielsenSchreier
 imports N_Properties Minimal Main Freegroup_with_Basis
 begin   
+section \<open>Proof of Nielsen-Schreier.\<close>
 
 text \<open>This file contains the formalisation of Nielsen Schreier\<close>
 
@@ -72,7 +73,7 @@ proof-
     by (smt (verit, del_insts) G'_def UnCI X'_def assms dual_order.trans gen_span.intros(1) mem_Collect_eq one_SG subgroup.mem_carrier subset_eq union_inv_def union_inv_sub_H) 
   hence Q_S:"?Q A" by argo
   hence "?Q (minimal_set (X' (SG (freegroup S) G) S) S)" unfolding minimal_set_def using someI
-    by (metis (mono_tags, lifting))
+    by (smt (verit)) 
   then show ?thesis by argo
 qed
 
@@ -91,7 +92,7 @@ proof-
           mem_Collect_eq one_SG subgroup.mem_carrier subset_eq union_inv_def union_inv_sub_H) 
   hence Q_S:"?Q A" by argo
   hence "?Q (minimal_set (X' (SG (freegroup S) G) S) S)" unfolding minimal_set_def using someI
-    by (metis (mono_tags, lifting))
+    by (smt (verit, del_insts)) 
   then show ?thesis by argo
 qed
 
@@ -109,7 +110,7 @@ proof-
           mem_Collect_eq one_SG subgroup.mem_carrier subset_eq union_inv_def union_inv_sub_H) 
   hence Q_S:"?Q A" by argo
   hence "?Q (minimal_set (X' (SG (freegroup S) G) S) S)" unfolding minimal_set_def using someI
-    by (metis (mono_tags, lifting))
+   by (smt (verit, ccfv_SIG))
   hence "(minimal_set (X' (SG (freegroup S) G) S) S) \<subseteq>  (X' (SG (freegroup S) G) S)" by argo
   thus ?thesis using assms unfolding X'_def SG_def 
     using subgroup.subset by fastforce

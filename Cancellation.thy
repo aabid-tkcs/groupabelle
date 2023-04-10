@@ -2,8 +2,8 @@ theory Cancellation
 imports "FreeGroupMain"  "HOL-Proofs-Lambda.Commutation" 
 begin
 
-text \<open>This file contains sections that are adapted from the Cancellation.thy, available
-in the formalisation of Free Groups, by Joachim Breitner, 
+text \<open>This file contains sections that are adapted from the Cancelation.thy, 
+available in the formalisation of Free Groups, by Joachim Breitner, 
 available in Archive of Formal Proofs.
  The formalisation is available on 
  https://isa-afp.org/entries/Free-Groups.html. 
@@ -178,7 +178,7 @@ text \<open>Relating cancellation and reduction.\<close>
 
 lemma cancels_to_1_at_not_reduced:
   assumes "reduced xs" 
-    shows "(\<nexists>i. i<(length xs - 1) \<and> xs!i = inverse (xs!(i+1)))"
+    shows "\<not>(\<exists>i. i<(length xs - 1) \<and> xs!i = inverse (xs!(i+1)))"
   using assms
 proof(induction xs)
   case Nil
@@ -237,7 +237,7 @@ lemma not_reduced_cancels_to_1_at:
     shows "(\<exists>i .i<(length xs - 1)\<and> xs!i = inverse (xs!(i+1)))"
 proof(rule ccontr)
   assume assm: "\<not>(\<exists>i .i<(length xs - 1)\<and>  xs!i = inverse (xs!(i+1)))"
-  then have  "(\<nexists>i .i<(length xs - 1)\<and> xs!i = inverse (xs!(i+1)))" by simp
+  then have  "\<not>(\<exists>i .i<(length xs - 1)\<and> xs!i = inverse (xs!(i+1)))" by simp
   then have "reduced xs"
   proof(induction xs rule:reduced.induct)
     case 1
@@ -366,9 +366,9 @@ qed
 
 lemma reduced_no_cancels_to_1_at:
   assumes "reduced xs"
-    shows "(\<nexists>i . cancels_to_1_at i xs ys)"
+    shows "\<not>(\<exists>i . cancels_to_1_at i xs ys)"
 proof(rule ccontr)
-  assume assm: "\<not>(\<nexists>i . cancels_to_1_at i xs ys)"
+  assume assm: "\<not>(\<not>(\<exists>i . cancels_to_1_at i xs ys))"
   hence "\<exists>i . cancels_to_1_at i xs ys" by auto
   then obtain i where "cancels_to_1_at i xs ys" by auto
   then have 1:"inverse (xs!i) = (xs!(i+1))" using cancels_to_1_at_def by (simp add: cancels_to_1_at_def)
@@ -759,7 +759,7 @@ proof-
   thus ?thesis by (simp add:wfP_def)
 qed
 
-text\<open>Showing confluence for cancels_to_1. This statement is adapted from 
+text\<open>Showing confluence for cancels to 1. This statement is adapted from 
 Theory cancellation.\<close> 
 
 lemma diamond_cancel: 
@@ -962,7 +962,8 @@ next
   qed
 qed
 
-text \<open>Finally, we show each reduced word has a unique normal form. This lemma is adapted from Theory Cancelation.\<close> 
+text \<open>Finally, we show each reduced word has a unique normal form. 
+      This lemma is adapted from Theory Cancelation.\<close> 
 
 lemma unique_reduced_cancel:
   assumes "cancels_to xs ys" 

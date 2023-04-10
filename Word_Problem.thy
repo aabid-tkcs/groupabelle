@@ -3,6 +3,7 @@ theory Word_Problem
           
 begin
 
+section \<open>Word Problem.\<close>
 
 text\<open>reduce xs returns xs with the first instance of an element and its inverse 
       occurring next to each other removed.\<close>
@@ -17,7 +18,7 @@ fun reduce :: "('a,'b) word \<Rightarrow> ('a,'b) word"
 
 text \<open>Some lemmas that required to show that 
       if two words iterated by reduce by their length are equal
-      then they are related by cancels_eq\<close>
+      then they are related by cancels eq\<close>
 
 lemma cons_reduce: 
   assumes "x \<noteq> inverse y" 
@@ -335,8 +336,8 @@ next
   qed
 qed
 
-text \<open>Now we show that cancels_eq xs ys is equivalent to (reduce^^(length xs)) xs = (reduce^^(length ys)) ys,
-      and also relating them to ~.\<close>
+text \<open>Now we show that cancels eq xs ys is equivalent to applying reduce iteratively
+      on xs and ys, and also relating them to equivalence relation.\<close>
 
 lemma iter_imp_cancels: 
   assumes "(reduce^^(length xs)) xs = (reduce^^(length ys)) ys"
@@ -371,7 +372,7 @@ lemma cancels_eq_imp_reln:
   using cancels_imp_iter[of "xs" "ys"] iter_cancels_to[of "xs" "length xs"] cancels_imp_rel[of "xs" "ys"] 
   by (metis cancels_eq_def cancels_imp_rel iter_cancels_to reln.sym reln.trans)
 
-text\<open>Here, we prove some lemmas about ~ and free group elements needed to
+text\<open>Here, we prove some lemmas about reln and free group elements needed to
      give a solution to the word problem.\<close>
 
 lemma word_problem_not_eq:
